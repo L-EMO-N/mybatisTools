@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    
+    <classPathEntry  location="F:\maven\repository\mysql\mysql-connector-java\5.1.43"/>
+    <context id="DB2Tables"  targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="false" />
+            <!-- 数据库注释支持 -->
+            <property name="addRemarkComments" value="true"/>
+            <!-- 时间格式设置 -->
+            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        </commentGenerator>
+        <!-- 连接数据库 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/springboot?userUnicode=true&amp;characterEncoding=utf8" userId="root" password="root" />
+        <!-- 数值类型数据是否全部使用BigDecimal类型 -->
+        <javaTypeResolver type="com.lemon.tools.MyJavaTypeResolver">
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 生成po类 -->
+        <javaModelGenerator targetPackage="autoCode" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- 生成xml映射文件 -->
+        <sqlMapGenerator targetPackage="autoCode" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="isMergeable" value="false" />
+        </sqlMapGenerator>
+        <!-- 生成dao类 -->
+        <javaClientGenerator targetPackage="autoCode" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 需要生产po类的表  schema="root"-->
+        <table  tableName="city" domainObjectName="City" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!-- 主键生成方式 -->
+            <!-- <generatedKey column="u_id" sqlStatement="select seq_t_user.nextval from dual" identity="true" />-->
+            <!-- 列名去除前缀 -->
+            <columnRenamingRule searchString="^[^_]+" replaceString="" />
+        </table>
+    </context>
+</generatorConfiguration>
